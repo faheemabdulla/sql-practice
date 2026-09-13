@@ -19,7 +19,13 @@ Q2: Which product categories generate the most revenue?
 -- Answer: Spices generate the most revenue at 7,525, followed by
 -- Grains at 6,260 and Beverages at 3,880. Spices are the strongest
 -- revenue-generating category in the available order-item data.
+SELECT PRODUCT_ID,QUANTITY * UNIT_PRICE AS REVENUE
+FROM ORDER_ITEMS
+GROUP BY PRODUCT_ID
+ORDER BY REVENUE DESC;
 
+SELECT PRODUCT_ID,CATEGORY
+FROM PRODUCTS;
 
 
 
