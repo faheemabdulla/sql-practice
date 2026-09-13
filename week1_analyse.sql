@@ -49,6 +49,19 @@ GROUP BY CUSTOMER_ID
 ORDER BY SPEND DESC
 LIMIT 5;
 
+-- Q5: Is monthly order volume growing, flat, or declining across
+-- the period we have data for?
+-- Answer: Monthly order volume is declining across the available
+-- period. Orders start at 4 per month in January and February,
+-- remain at 4 in March, fluctuate between 3 and 4 through May and
+-- June, then fall to 2 in July and 1 in August. Overall, the trend
+-- is downward rather than growing or remaining flat.
+
+SELECT SUBSTR(ORDER_DATE,1,7) AS MONTH ,COUNT(*) AS CUSTOMERS
+FROM ORDERS
+GROUP BY SUBSTR(ORDER_DATE,1,7)
+ORDER BY MONTH;
+
 select name,customer_id
 from customers
 ;
