@@ -31,3 +31,24 @@ Q2: Which product categories generate the most revenue?
 -- order value is tied to orders that are not currently delivered.
   select count(*) from orders
 where status = 'delivered'
+
+-- Q4: Who are our top 5 customers by delivered spend, and what
+-- share of total revenue do they represent?
+-- Answer: The top five customers by delivered spend are Aisha Rahman
+-- (4,080), Ravi Kumar (3,975), Meera Nair (3,725), Priya Sharma
+-- (2,815), and Sneha Reddy (1,855). Together they account for 16,450
+-- of delivered revenue, or approximately 72.5% of total delivered
+-- revenue. This indicates that delivered revenue is highly concentrated
+-- among a small group of customers.
+
+
+SELECT CUSTOMER_ID,SUM(TOTAL_AMOUNT) AS SPEND
+FROM ORDERS
+WHERE STATUS ='delivered'
+GROUP BY CUSTOMER_ID
+ORDER BY SPEND DESC
+LIMIT 5;
+
+select name,customer_id
+from customers
+;
